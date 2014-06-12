@@ -1,4 +1,4 @@
 Meatspaces Messages
 ================
 
-A meatspaces messages web component for [Appmaker](https://github.com/mozilla-appmaker/appmaker).
+A meatspaces messages web component for [Appmaker](https://github.com/mozilla-appmaker/appmaker)!
