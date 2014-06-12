@@ -67,16 +67,26 @@
       :host #container[data-mode="text only"] .message .text {
       }
 
-      :host #container[data-mode="image only"] .message {
-        display: inline;
+      :host #container[data-mode="image only"] {
+        margin-left: 3%;
       }
 
       :host #container[data-mode="image only"] .message img {
-        width: 32%;
+        width: 100%;
+        height: auto;
+        float: none;
       }
 
       :host #container[data-mode="image only"] .message .text {
         display: none;
+      }
+
+      :host #container[data-mode="image only"] .message {
+        display: inline-block;
+        width: 48%;
+        background: rgba(0, 0, 0, 0.1);
+        padding: 0;
+        margin-top: .25em;
       }
     </style>
 
