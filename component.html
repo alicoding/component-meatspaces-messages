@@ -1,5 +1,5 @@
 <polymer-element name="ceci-meatspaces-messages" attributes="server mode" extends="ceci-element">
-  <script src="https://dl.dropboxusercontent.com/u/1913694/socket.io.js"></script>
+  <script src="socketio.js"></script>
   <ceci-definition>
     {
       "tags": ["meatspaces", "chat"],
@@ -104,6 +104,9 @@
       },
       _connect: function () {
         var that = this;
+
+        if (this._socket) { return; }
+
         var socket = this._socket = io.connect(this.server);
         socket.on('connect', function () {
           socket.emit('join');
@@ -121,6 +124,7 @@
         }
         this.status = 'Disconnected';
         this._boundMessageReceived = null;
+        this._socket = null;
       },
       ready: function () {
         this.super();
