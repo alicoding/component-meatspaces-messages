@@ -1,4 +1,4 @@
-<polymer-element name="ceci-meatspaces-messages" attributes="server mode" extends="ceci-element">
+<polymer-element name="ceci-meatspaces-messages" attributes="server mode height" extends="ceci-element">
   <script src="vendor/socketio.js"></script>
   <ceci-definition>
     {
@@ -11,6 +11,11 @@
           "label": "Meatspaces Server",
           "description": "Meatspaces server to which this app should connect to receive messages.",
           "editable": "text"
+        },
+        "height": {
+          "label": "Height",
+          "description": "Height of this brick.",
+          "editable": "number"
         },
         "mode": {
           "label": "Message Mode",
@@ -30,7 +35,6 @@
 
       :host #container {
         overflow: scroll;
-        height: 300px;
       }
 
       :host #container .message {
@@ -104,6 +108,7 @@
       server: 'https://chat.meatspac.es:443',
       status: 'Connecting...',
       mode: 'both',
+      height: 300,
       _messages: [],
       _boundMessageReceived: null,
       _messageReceived: function (data) {
@@ -138,6 +143,7 @@
       },
       ready: function () {
         this.super();
+        this.heightChanged();
       },
       attached: function (e) {
         this._connect();
@@ -153,6 +159,9 @@
         this.async(function () {
           this._connect();
         });
+      },
+      heightChanged: function () {
+        this.$.container.style.height = this.height + 'px';
       }
     });
   </script>
